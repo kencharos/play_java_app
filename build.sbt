@@ -16,5 +16,8 @@ libraryDependencies ++= Seq(
 // other, legacy style, accesses its actions statically.
 routesGenerator := InjectedRoutesGenerator
 
+fork in run := false
 
-fork in run := true
+// autoreload は OSレベルのファイル変更検知を受け取るため、OSやファイルシステムによっては正常に動作しない場合がある。
+// その場合以下のオプションを使うことで原始的なポーリングを行う事ができる。
+//PlayKeys.fileWatchService  := play.runsupport.FileWatchService.sbt(500)

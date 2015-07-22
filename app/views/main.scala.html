@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
     <head>
         <title>@title</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
@@ -13,6 +13,26 @@
         <script type="text/javascript" src="@routes.Assets.versioned("lib/bootstrap/js/bootstrap.min.js")"></script>
     </head>
     <body>
-        @content
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">play sample</a>
+                </div>
+                @if(Http.Context.current().args.containsKey("auser")){
+                <div class="navbar-form navbar-right">
+                    <a href="/logout" class="btn btn-default">logout</a>
+                </div>
+                }
+            </div>
+        </nav>
+        <div class="container" id="main_content">
+            @content
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted text-right">2015</p>
+            </div>
+        </footer>
     </body>
 </html>
