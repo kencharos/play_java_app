@@ -1,15 +1,15 @@
 @import tags._
-@(message: String)
+@(form: Form[auth.LoginRequest])
 
 @main("login") {
 
-<h1>ログイン</h1>
+<h1>Login</h1>
 <form  method="POST" class="form" action="@routes.Application.doLogin()">
-    @bs("id", "id") {
-        <input type="text" name="id"  id="id" class="form-control" placeholder="user1" />
+    @bs(form("id"), "id") {(name, value) =>
+        <input type="text" name="@name"  id="@name" class="form-control" placeholder="user1" value="@value" />
     }
-    @bs("password", "パスワード") {
-        <input type="password" name="password"  id="password" class="form-control" placeholder="user1" />
+    @bs(form("password"), "password") { (name, value) =>
+        <input type="password" name="@name"  id="@name" class="form-control" placeholder="user1" value="@value" />
     }
 
     <input type="submit" class="btn btn-primary" value="ログイン"/>

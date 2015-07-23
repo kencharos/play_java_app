@@ -1,8 +1,10 @@
-@(name: String, label:String)(body: Html)
-
-
-<div class="form-group">
-    <label for="@name" class="control-label">@label
-        <span></span></label>
-    @body
+@import tags._
+@(f: Form.Field, label:String)(body: (String, String) => Html)
+<div class="@if(f.errors.isEmpty()){form-group}else{form-group has-error}">
+    <label for="@f.name()" class="control-label">@label
+        @if(!f.errors.isEmpty()) {
+            <span>@Messages(f.errors.get(0).message)</span>
+        }
+    </label>
+    @body(f.name(), f.value())
 </div>

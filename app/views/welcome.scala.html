@@ -1,8 +1,14 @@
 @import tags._
-@(username: String)
+@(username: String, notifications:List[String])
 
 @main("welcome") {
 
 <h1>Welcome! @username</h1>
+
+<h2>Notification</h2>
+<ul>@for(note <- notifications){
+    <li>@note</li>
+    }
+</ul>
 
 }

@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /                           controllers.Default.redirect(to = "/login")
 GET     /login                      controllers.Application.login()
 GET     /logout                      controllers.Application.logout()
 POST    /login                      controllers.Application.doLogin()
